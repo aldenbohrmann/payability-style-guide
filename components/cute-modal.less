@@ -1,0 +1,136 @@
+//
+// cute-modal
+// in-house modal implementation using same
+// Bootstrap's markup (prefixed with cute-).
+// IE9+
+// --------------------------------------------------
+
+.cute-modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  z-index: @zindex-modal;
+  transition: all 500ms;
+
+  .cute-modal-backdrop {
+    position: absolute;
+    z-index: 10;
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: fade(@ghost, @modal-backdrop-opacity * 100%);
+    transition: all 500ms ease-in-out 0ms;
+  }
+
+  .cute-modal-content {
+    .clearfix();
+    z-index: 20;
+    background-color: #fff;
+    transition: all 500ms ease-in-out 0ms;
+
+    @media (min-width: @grid-float-breakpoint) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: @border-radius-base;
+      border: 1px solid @modal-content-border-color;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+
+    @media (max-width: @grid-float-breakpoint-max) {
+      position: absolute;
+      margin: 0;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transform: translate(0, 0);
+    }
+  }
+
+  .cute-modal-header {
+    @modal-title-min-height: (@modal-title-padding + @modal-title-line-height);
+    padding: @modal-title-padding;
+    min-height: @modal-title-min-height;
+    .close {
+      margin-top: -2px;
+    }
+    // When modal header is present, reduce modal body height
+    ~ .cute-modal-body {
+      max-height: calc(~"100vh - 65px - 60px - {@modal-title-min-height}");
+    }
+  }
+
+  .cute-modal-title {
+    font-size: @font-size-large;
+    font-family: @headings-font-family;
+    font-weight: normal;
+    margin: 0;
+    line-height: @modal-title-line-height;
+  }
+
+  .cute-modal-body {
+    padding: @modal-inner-padding;
+    overflow: auto;
+    max-height: calc(~"100vh - 65px");
+    // Add vertical space between viewport and modal
+    @media (min-width: @grid-float-breakpoint) {
+      max-height: calc(~"100vh - 65px - 60px");
+      max-width: 100%;
+    }
+  }
+
+  .cute-modal-footer {
+    .clearfix();
+    padding: (@modal-inner-padding / 2) @modal-inner-padding;
+    text-align: right;
+    border-top: 1px solid @modal-footer-border-color;
+
+    // Align buttons
+    .btn + .btn {
+      margin-left: (@modal-inner-padding / 2);
+      margin-bottom: 0;
+    }
+    .btn-group .btn + .btn {
+      margin-left: -1px;
+    }
+    .btn-block + .btn-block {
+      margin-left: 0;
+    }
+  }
+}
+
+// Angular.js ng-animate classes
+.cute-modal {
+  &.ng-enter,
+  &.ng-leave.ng-leave-active {
+    .cute-modal-backdrop {
+      opacity: 0;
+    }
+    .cute-modal-content {
+      opacity: 0;
+      transform: translate(-50%, 100%);
+    }
+  }
+  &.ng-leave,
+  &.ng-enter.ng-enter-active {
+    .cute-modal-backdrop {
+      opacity: 1;
+    }
+    .cute-modal-content {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

@@ -1,0 +1,103 @@
+
+.pyb-breadcrumb {
+  background-color: @breadcrumb-bg;
+  border-radius: @border-radius-base;
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+  > li {
+    display: inline-block;
+  }
+  > li > * {
+    color: @the-robots;
+    display: inline-block;
+    line-height: 1em;
+    outline: none;
+    padding-bottom: .75em;
+    padding-left: 2.75em; // 1.25em more to compensate arrow negative position
+    padding-right: .5em;
+    padding-top: .75em;
+    position: relative;
+    text-decoration: none;
+    // Styled arrow. Target CSS3-supported browsers
+    &:not(old)::after {
+      background-color: @breadcrumb-bg;
+      border-color: #fff;
+      border-radius: 0 @border-radius-base 0 100%;
+      border-style: solid;
+      border-width: .12em .12em 0 0;
+      content: " ";
+      display: inline-block;
+      height: 2.5em;
+      position: absolute;
+      right: -1.5em;
+      top: 0;
+      transform-origin: center;
+      transform: scale(1) rotate(45deg) skew(10deg, 10deg);
+      width: 2.5em;
+      z-index: 1; // Place arrow above next item
+    }
+  }
+  > li.active > *,
+  > li > a[href]:hover {
+    color: #fff;
+  }
+  > li.active > *,
+  > li.active > *:not(old)::after {
+    background-color: @rush;
+  }
+  > li > a[href]:hover,
+  > li > a[href]:hover:not(old)::after {
+    background-color: darken(@rush, 10%);
+  }
+  // First item is not preceeded by arrow so it doesn't need extra padding
+  > li:first-child > * {
+    padding-left: 1.5em;
+  }
+  // Hide arrow of last item in breadcrumb
+  > li:last-child > * {
+    padding-right: 1.5em;
+    &:not(old)::after {
+      display: none;
+    }
+  }
+}
+
+.pyb-breadcrumb.numbered {
+  /*
+    CSS counters.
+    `flag` is the name of the variable.
+  */
+  counter-reset: flag;
+  > li > *::before {
+    background-color: @rush;
+    border-radius: 100%;
+    box-shadow: 0 0 0 .2em @rush;
+    color: #fff;
+    content: counter(flag);
+    counter-increment: flag;
+    display: inline-block;
+    height: 1em;
+    line-height: 1em;
+    margin-right: .75em;
+    text-align: center;
+    transform: scale(.86);
+    width: 1em;
+  }
+  > li.active > *::before,
+  > li > a[href]:hover::before {
+    background-color: #fff;
+    box-shadow: 0 0 0 .2em #fff;
+    color: @rush;
+  }
+}
+
+// Animate state changes
+.pyb-breadcrumb > li > *,
+.pyb-breadcrumb > li > *::before,
+.pyb-breadcrumb > li > *::after {
+  transition: all 150ms ease-in-out 0s;
+}

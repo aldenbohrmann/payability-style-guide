@@ -1,0 +1,254 @@
+//
+// Forms
+// -------------------------
+
+// Input padding correction
+
+// Normal/base
+.form-control {
+  .input-size(@input-height-base; @input-padding-base-vertical; @input-padding-base-horizontal; @font-size-base; @line-height-base; @input-border-radius);
+}
+
+// Small
+.input-sm {
+  .input-size(@input-height-small; @input-padding-small-vertical; @input-padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+}
+.form-group-sm {
+  .form-control {
+    .input-size(@input-height-small; @input-padding-small-vertical; @input-padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  }
+  .form-control-static {
+    height: @input-height-small;
+    padding: @input-padding-small-vertical @input-padding-small-horizontal;
+    font-size: @font-size-small;
+    line-height: @line-height-small;
+  }
+}
+// Large
+.input-lg {
+  .input-size(@input-height-large; @input-padding-large-vertical; @input-padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+}
+.form-group-lg {
+  .form-control {
+    .input-size(@input-height-large; @input-padding-large-vertical; @input-padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  }
+  .form-control-static {
+    height: @input-height-large;
+    padding: @input-padding-large-vertical @input-padding-large-horizontal;
+    font-size: @font-size-large;
+    line-height: @line-height-large;
+  }
+}
+
+// Floating labels
+label.floating-label {
+  font-weight: normal;
+  // Use same color than placeholders
+  color: @input-color-placeholder;
+  // Small font-size when label is floating
+  font-size: @font-size-small;
+  display: block;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  // Hack for input groups
+  z-index: 5;
+  // Hack for selects
+  pointer-events: none;
+  // Place on top of input
+  top: 2px;
+  // Align with input
+  left: @input-padding-base-horizontal;
+  transition: all 150ms ease-in-out 0ms;
+  // Hide actual placeholders
+  + input:-moz-placeholder { color: transparent; }
+  + input::-moz-placeholder { color: transparent; }
+  + input::-ms-input-placeholder { color: transparent; }
+  + input::-webkit-input-placeholder { color: transparent; }
+  // Default size
+  + input,
+  + select,
+  + textarea {
+    // Make room for the label
+    padding: (@font-size-small + @input-padding-base-vertical + 2px) @input-padding-base-horizontal @input-padding-base-vertical @input-padding-base-horizontal;
+    border-radius: 0;
+    border-width: 0 0 2px 0;
+    line-height: @line-height-base;
+    min-height: round((@line-height-base * @font-size-large) + (@font-size-small + @input-padding-base-vertical + 2px) + @input-padding-base-vertical + 2px);
+    box-shadow: none;
+    &:active,
+    &:focus {
+      box-shadow: none;
+      + .input-group-btn .btn-link {
+        border-color: @input-border-focus;
+      }
+    }
+  }
+  + select {
+    // Prevent webkit on MacOS to use OS's style
+    -webkit-appearance: none;
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 #000;
+    }
+  }
+  + textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: (@line-height-base * @font-size-large * 2) + (@font-size-small + @input-padding-base-vertical + 2px) + @input-padding-base-vertical + 1px;
+  }
+  // Only add .rest for `input`s
+  &.rest {
+    font-size: @font-size-large;
+    // This is hardcoded, need to be replaced with maths
+    top: 14px;
+    + input,
+    + textarea {
+      font-size: @font-size-large;
+      // Hardcoded
+      padding-top: 12px;
+      padding-bottom: 11px;
+    }
+  }
+  &.floating-label-select {
+    &::after {
+      border-color: @input-color-placeholder transparent transparent transparent;
+      border-style: solid;
+      border-width: 8px 8px 0 8px;
+      content: " ";
+      display: block;
+      height: 0;
+      position: absolute;
+      right: @input-padding-base-horizontal + 16px;
+      top: 22px;
+      transition: all 150ms ease-in-out 0s;
+      width: 0;
+    }
+    &.rest::after {
+      top: 10px;
+    }
+  }
+  .loading & {
+    + input,
+    + select {
+      animation: floatingLabelGlowing 1s ease-in-out 0s infinite;
+      + .input-group-btn .btn-link {
+        animation: floatingLabelGlowing 1s ease-in-out 0s infinite;
+      }
+    }
+  }
+  ~ .input-group-btn {
+    padding: 0;
+    vertical-align: bottom;
+    .btn {
+      border-radius: 0;
+      border-width: 0 0 2px 0;
+    }
+    .btn-link {
+      border-bottom: 2px solid @input-border;
+    }
+  }
+}
+
+input[type="checkbox"]:not(old),
+input[type="radio"]:not(old) {
+  width: 1px;
+  opacity: 0;
+  + label {
+    cursor: pointer;
+    &::before,
+    &::after {
+      transition: all 150ms linear 0s;
+      display: inline-block;
+      cursor: pointer;
+      width: 1em;
+      height: 1em;
+      margin: 0 .5em;
+      vertical-align: -.125em;
+    }
+  }
+  &:checked + label::before,
+  &:checked + label::after {
+    border-width: .25em;
+  }
+  + label::after {
+    display: none;
+  }
+  + label.text-right {
+    &::after {
+      display: inline-block;
+    }
+    &::before {
+      display: none;
+    }
+  }
+  &:disabled + label {
+    color: @shady;
+  }
+}
+
+input[type="radio"]:not(old) {
+  + label {
+    &::before,
+    &::after {
+      background-color: @rush;
+      border-radius: .5em;
+      border: .5em solid white;
+      box-shadow: 0 0 0 1px @rush;
+      content: " ";
+    }
+  }
+  &:checked + label::before,
+  &:checked + label::after {
+    border-width: .25em;
+  }
+  &:disabled + label {
+    cursor: not-allowed;
+    &::before,
+    &::after {
+      cursor: not-allowed;
+      background-color: lighten(desaturate(@rush, 20%), 20%);
+    }
+  }
+}
+
+input[type="checkbox"]:not(old) {
+  + label {
+    &::before,
+    &::after {
+      background-color: transparent;
+      box-shadow: 0 0 0 2px @fern;
+      color: transparent;
+      content: "\e615";
+      font-family: 'payability-icons';
+      line-height: 1em;
+    }
+  }
+  &:checked + label::before,
+  &:checked + label::after {
+    color: #fff;
+    background-color: @fern;
+  }
+  &:disabled + label {
+    cursor: not-allowed;
+    &::before,
+    &::after {
+      cursor: not-allowed;
+      box-shadow: 0 0 0 2px lighten(desaturate(@fern, 20%), 20%);
+    }
+  }
+  &:disabled:checked + label {
+    &::before,
+    &::after {
+      background-color: lighten(desaturate(@fern, 20%), 20%);
+    }
+  }
+}
+
+
+@keyframes floatingLabelGlowing {
+  0% { border-color: @input-border; }
+  50% { border-color: @input-border-focus; }
+  100% { border-color: @input-border; }
+}

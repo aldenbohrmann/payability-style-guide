@@ -1,0 +1,181 @@
+//
+// Tables
+// -------------------------
+
+// Used to give background color, some borders, and rounded corners to a table.
+// It also inherits responsive properties from Bootstrap's .table-responsive
+// so there's no need to include .table-responsive in markup.
+.table-wrapper {
+  .table-responsive();
+  border-radius: @border-radius-base;
+  border: 1px solid @mystic;
+  background-color: #fff;
+}
+
+// Table helper classes
+// --------------------------------------------------
+
+// For some reason, Bootstrap forces vertical-align:top.
+// Overwrite it
+.table > tbody > tr > td {
+  vertical-align: inherit;
+}
+
+// Helper classes for row/cell vertical and horizontal alignment.
+table.table {
+  tr, th, td {
+    &.right { text-align: right; }
+    &.center { text-align: center; }
+    &.left { text-align: left; }
+    &.top { vertical-align: top; }
+    &.middle { vertical-align: middle; }
+    &.bottom { vertical-align: bottom; }
+  }
+}
+
+// Table row/cell contextual variants
+// --------------------------------------------------
+
+// Overwrite bootstrap defaults
+.table-row-variant(active; desaturate(lighten(@moon, 2%), 3%));
+.table-row-variant(success; desaturate(lighten(@brand-success, 38%), 10%));
+.table-row-variant(info; desaturate(lighten(@brand-info, 51%), 8%));
+.table-row-variant(warning; desaturate(lighten(@brand-warning, 36%), 6%));
+.table-row-variant(danger; desaturate(lighten(@brand-danger, 36%), 6%));
+// Add an extra one: .muted
+.table-row-variant(muted, @lilac);
+
+// Table caption (missknown as table header)
+// --------------------------------------------------
+
+table.table {
+  caption {
+    padding: 0;
+    .caption-row {
+      .clearfix();
+      padding: 0 16px;
+      // Table title
+      .table-title {
+        color: @whale;
+        font-family: @headings-font-family;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+      }
+      // Action buttons to the right
+      .btn.pull-right {
+        margin: -6px 0 -6px 16px;
+      }
+      // Action buttons to the left
+      .btn.pull-left {
+        margin: -6px 16px -6px 0;
+      }
+    }
+  }
+}
+
+// Table header
+// --------------------------------------------------
+
+table.table {
+  thead {
+    tr {
+      background-color: @myst;
+    }
+    td, th {
+      font-family: @headings-font-family;
+      font-size: @table-header-font-size;
+      font-weight: 600;
+    }
+  }
+}
+
+// angular-smart-table specifics
+// --------------------------------------------------
+
+// Angular-smart-table rules to display sort-direction in table headers.
+// Icons based on payability-fonts.
+[st-sort] {
+  cursor: pointer;
+  &.st-sort-descent:after,
+  &.st-sort-ascent:after {
+    font-family: 'payability-icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    margin-left: .5em;
+    margin-right: .5em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  &.st-sort-descent:after {
+    content: "\e902";
+  }
+  &.st-sort-ascent:after {
+    content: "\e612";
+  }
+}
+
+// Payability's pyb-scrll-tbl scrolling table
+// --------------------------------------------------
+
+table[pyb-scrll-tbl] {
+  margin: 0;
+  // If a srolling table, prevent main td color changes
+  // when Bootstrap's .table-hover and .table-striped
+  // are applied to the table.
+  > tbody > tr {
+    &:hover {
+      background-color: inherit;
+    }
+    &:nth-of-type(odd) {
+      background-color: inherit;
+    }
+  }
+  .table-content {
+    padding: 0;
+    border-width: 0;
+    margin: 0;
+  }
+  .inner-table-container {
+    overflow-y: auto;
+    overflow-x: hidden
+  }
+  .inner-table {
+    margin: 0;
+  }
+  // Scrolling tables needs to insert divs for
+  // table aligment hack.
+  [st-sort] {
+    cursor: pointer;
+    // Remove the arrow from the `td`
+    &.st-sort-descent:after,
+    &.st-sort-ascent:after {
+      display: none;
+    }
+    // and place it inside the `div` instead
+    &.st-sort-descent > div:after,
+    &.st-sort-ascent > div:after {
+      font-family: 'payability-icons';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      margin-left: .5em;
+      margin-right: .5em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    &.st-sort-descent > div:after {
+      content: "\e902";
+    }
+    &.st-sort-ascent > div:after {
+      content: "\e612";
+    }
+  }
+}

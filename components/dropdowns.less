@@ -1,0 +1,51 @@
+//
+// Dropdown and dropup menus
+// -------------------------
+
+@transition-duration: 210ms;
+
+// Dropdown open state
+// Only meant to be extended
+.open() {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1,1) translate(0,0);
+  transition: visibility 0s ease-in-out 0ms, opacity @transition-duration ease-in-out 0s,  transform @transition-duration ease-in-out 0s;
+}
+
+// Display dropdown on click without JS
+.open-on-click {
+    .dropdown-menu {
+      display:block;
+      visibility: hidden;
+      opacity: 0;
+      transform: scale(0,0) translate(0,-100%);
+      transition: visibility 0s ease-in-out @transition-duration, opacity @transition-duration ease-in-out 0s,  transform @transition-duration ease-in-out 0s;
+    }
+  .dropdown-toggle:focus {
+    // When the .dropdown-toggle is focused
+    // place this element on top of it,
+    // so when user clicks again the toggler
+    // will lose focus and the dropdown will
+    // be closed.
+    ~ .dropdown-close {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    ~ .dropdown-menu {
+      .open();
+    }
+  }
+  // Let click events triggers
+  .dropdown-menu:hover,
+  .dropdown-menu:focus,
+  .dropdown-menu:active {
+    .open();
+  }
+}

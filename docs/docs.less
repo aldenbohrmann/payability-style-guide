@@ -1,0 +1,356 @@
+// Get Twitter Bootstrap 3 form where it is supposed to be
+@import "../bower_components/bootstrap/less/bootstrap.less";
+
+// Import payability-styles
+@import "../main.less";
+
+// Mixins
+// -----------------------------------------------------------------------------
+
+.BoxElevationHelper(@level: 1){
+  & when (@level = 1) {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  & when (@level = 2) {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  & when (@level = 3) {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+  & when (@level = 4) {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+  & when (@level = 5) {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  }
+}
+
+.CreateColorSwatch(@name) {
+  .color-swatch.@{name} {
+    background-color: @@name;
+    .color-name {
+      color: contrast(@@name);
+      &::before {
+        content: "@{@{name}}";
+      }
+      &::after {
+        content: "@@{name}";
+      }
+    }
+  }
+}
+
+// Styles start here
+// -----------------------------------------------------------------------------
+
+.styles-navbar-brand {
+  background: url(@logo-sm-dark) left center no-repeat;
+  padding-left: 150px;
+  background-size: 138px 30px;
+}
+
+.payability-styles-landing-page {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  h1 {
+    font-weight: normal;
+    letter-spacing: .1em;
+    word-spacing: .2em;
+    text-transform: uppercase;
+    padding: 0;
+    margin: -.75em 0 0 0;
+    text-align: center;
+    position: fixed;
+    z-index: 30;
+    width: 100%;
+    transition: all 260ms ease-in-out 0s;
+    @media (min-aspect-ratio: 1/1) {
+      font-size: 3vw;
+      top: 20%;
+    }
+    @media (max-aspect-ratio: 1/1) {
+      font-size: 6vw;
+      top: 50%;
+    }
+    span {
+      padding: .5em 1.2em;
+      background-color: #fff;
+      border-radius: .045em;
+      box-shadow: 0 .27em .54em rgba(0,0,0,0.19), 0 .162em .162em rgba(0,0,0,0.23);
+      transition: all 260ms ease-in-out 0s;
+    }
+  }
+  .links {
+    height: 100vh;
+    .half-page {
+      display: table;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      @media (min-aspect-ratio: 1/1) {
+        height: 100%;
+        width: 50%;
+        &.left  { float: left; }
+        &.right {float: right; }
+      }
+      @media (max-aspect-ratio: 1/1) {
+        height: 50%;
+        width: 100%;
+      }
+      &:hover {
+        text-decoration: none;
+        .title,
+        .description {
+          text-shadow: 0 .27em .54em rgba(0,0,0,0.19), 0 .162em .162em rgba(0,0,0,0.23);
+        }
+      }
+      .text-holder {
+        display: table-cell;
+        vertical-align: middle;
+        position: relative;
+        z-index: 10;
+        @media (min-aspect-ratio: 1/1) {
+          padding-top: 12%;
+        }
+      }
+      .title,
+      .description {
+        display: block;
+        color: #fff;
+        text-shadow: 0 .026em .079em rgba(0,0,0,0.12), 0 .026em .053em rgba(0,0,0,0.24);
+        transition: all 260ms ease-in-out 0s;
+      }
+      @media (min-aspect-ratio: 1/1) {
+        .title {
+          font-size: 4vw;
+          margin-bottom: .5em;
+        }
+        .description {
+          font-size: 2vw;
+        }
+      }
+      @media (max-aspect-ratio: 1/1) {
+        .title {
+          font-size: 8vw;
+          margin-bottom: .5em;
+        }
+        .description {
+          font-size: 4vw;
+        }
+      }
+    }
+    .payability,
+    .bootstrap {
+      background-repeat: no-repeat;
+      background-size: 80%, 100%;
+      background-position: center center, left top;
+      transition: all 260ms ease-in-out 0s;
+    }
+    .payability {
+      background-color: @forest;
+      background-image: url('../img/payability-logo-big.png'), linear-gradient(to bottom, darken(@forest, 10%) 0, @forest 100%);
+      background-position: 150% 90%, top left;
+      &:hover {
+        background-size: 96%, 100%;
+      }
+    }
+    .bootstrap {
+      background-color: #6f5499;
+      background-image: url('../img/bootstrap-page.png'), linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+      background-position: -150% 90%, top left;
+      &:hover {
+        background-size: 96%, 100%;
+      }
+    }
+  }
+}
+
+.payability-styles-components {
+  padding-top: @navbar-height;
+  padding-bottom: @navbar-height;
+  section {
+    padding-top: @navbar-height;
+    margin-top: -1 * @navbar-height;
+  }
+}
+
+#components-header {
+  background-color: @whale;
+  color: #fff;
+  padding-top: @navbar-height + 40px;
+  padding-bottom: 40px;
+  p {
+    font-size: @font-size-large;
+  }
+}
+
+.live-example {
+  .clearfix();
+  margin: @padding-base-horizontal auto;
+  padding-left: @padding-base-horizontal;
+}
+
+.logo-test {
+  border-radius: @border-radius-base;
+  border: 1px solid @mystic;
+  background-color: #fff;
+  margin-bottom: @padding-base-horizontal;
+  text-align: center;
+  .logo {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 60%;
+    &.sm { height: 120px; }
+    &.lg { height: 360px; }
+    &.light {
+      background-color: @whale;
+      &.sm { background-image: url(@logo-sm-light); }
+      &.lg { background-image: url(@logo-lg-light); }
+    }
+    &.dark {
+      background-color: @ghost;
+      &.sm { background-image: url(@logo-sm-dark); }
+      &.lg { background-image: url(@logo-lg-dark); }
+    }
+  }
+  p {
+    padding: @padding-base-vertical @padding-base-horizontal;
+    margin: 0;
+  }
+}
+
+.typeface-test-drive {
+  border-radius: @border-radius-base;
+  border: 1px solid @mystic;
+  background-color: #fff;
+  margin-bottom: @padding-base-horizontal;
+  .typeface,
+  .typeface-code {
+    padding: @padding-base-vertical @padding-base-horizontal;
+    margin: 0;
+  }
+  .typeface {
+    font-size: @font-size-large;
+    line-height: @line-height-large;
+    &.hairline        { font-weight: 100;    font-style: normal; }
+    &.semilight       { font-weight: 200;    font-style: normal; }
+    &.light           { font-weight: 300;    font-style: normal; }
+    &.light-italic    { font-weight: 300;    font-style: italic; }
+    &.regular         { font-weight: normal; font-style: normal; }
+    &.regular-italic  { font-weight: normal; font-style: italic; }
+    &.semibold        { font-weight: 600;    font-style: normal; }
+    &.bold            { font-weight: bold;   font-style: normal; }
+    &.bold-italic     { font-weight: bold;   font-style: italic; }
+    &.black           { font-weight: 900;    font-style: normal; }
+  }
+  .typeface-code {
+    border-top: 1px solid @mystic;
+  }
+}
+
+.color-swatch {
+  border-radius: @border-radius-large;
+  display: table;
+  height: 8em;
+  text-align: center;
+  transition: all 150ms ease-in-out 0s;
+  vertical-align: middle;
+  width: 8em;
+  .BoxElevationHelper(1);
+  &.actionable {
+    cursor: pointer;
+    &:hover {
+      .BoxElevationHelper(3);
+    }
+  }
+  .color-name {
+    display: table-cell;
+    vertical-align: middle;
+    &::before,
+    &::after {
+      display: block;
+    }
+    &::before {
+      text-transform: uppercase;
+    }
+  }
+}
+
+/* Primary colors */
+.CreateColorSwatch(rush);
+.CreateColorSwatch(sweet-sweet);
+.CreateColorSwatch(crisp);
+.CreateColorSwatch(stacks);
+.CreateColorSwatch(fire);
+/* Greys */
+.CreateColorSwatch(in-the-black);
+.CreateColorSwatch(carbon);
+.CreateColorSwatch(the-robots);
+.CreateColorSwatch(dentist-chair);
+
+ul.color-swatch-list {
+  .list-unstyled();
+  > li {
+    display: inline-block;
+    margin: 0 1em 1em 0;
+  }
+}
+
+.attention-block-variant(@color) {
+  border-left-color: @color;
+  h1, h2, h3, h4, h5, h6 {
+    color: @color;
+  }
+}
+
+.attention-block {
+  border-left: 4px solid transparent;
+  padding: @padding-base-vertical @padding-base-horizontal;
+  // Same margin-bottom as paragraphs
+  margin-bottom: (@line-height-computed / 2);
+  background-color: @ghost;
+  &.info { .attention-block-variant(@brand-info); }
+  &.success { .attention-block-variant(@brand-success); }
+  &.warning { .attention-block-variant(@brand-warning); }
+  &.danger { .attention-block-variant(@brand-danger); }
+  pre {
+    background-color: #fff;
+  }
+}
+
+.dropdown-docs {
+  .live-example {
+    .dropdown,
+    .dropup {
+      display: inline-block;
+      + .dropdown,
+      + .dropup {
+        margin-left: @padding-base-horizontal;
+      }
+    }
+  }
+}
+
+.docs-toc {
+  border-bottom: 1px solid @lilac;
+  margin-bottom: 1em;
+  padding-bottom: 2em;
+  @media (min-width: (@screen-lg-min + 600px)) {
+    .BoxElevationHelper(@level: 1);
+    background-color: #fff;
+    border-radius: @border-radius-base;
+    border: 1px solid @lilac;
+    left: 15px;
+    padding: 30px;
+    position: fixed;
+    top: @navbar-height + 15px;
+  }
+  .list-unstyled {
+    font-size: 16px;
+    .list-unstyled {
+      padding-left: 2em;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "authors": [
+    "Alden Bohrmann  <aldenb@payability.com> (http://payability.com)"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
+  "description": "Bower component that provides .less files with Payability's styles based on Payability's style guide.",
+  "homepage": "https://github.com/Payability/payability-styles",
+  "ignore": [
+    "**/.*",
+    "npm-debug.log*",
+    "package.json",
+    "node_modules/",
+    "bower_components/",
+    "tests/",
+    "docs/",
+    "_docs/",
+    "tmp/"
+  ],
+  "keywords": [
+    "payability",
+    "styles",
+    "less",
+    "components",
+    "UI"
+  ],
+  "license": "LICENSE",
+  "main": "main.less",
+  "name": "payability-styles",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Payability/payability-styles.git"
+  }
+}

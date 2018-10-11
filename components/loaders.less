@@ -1,0 +1,104 @@
+//
+// Loaders and spinners
+// -------------------------
+
+
+// Load bar
+// -------------------------
+
+.load-bar {
+  display: block;
+  overflow: hidden;
+  background-color: transparent;
+  height: .2em;
+  &::before {
+    content: " ";
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transform-origin: 0 0;
+    transition: all 1s ease-in-out 0s;
+  }
+}
+
+.load-bar::before,
+.load-bar.info::before { background-color: @brand-info; }
+.load-bar.success::before { background-color: @brand-success; }
+.load-bar.warning::before { background-color: @brand-warning; }
+.load-bar.danger::before { background-color: @brand-danger; }
+.load-bar.muted::before { background-color: @slate; }
+
+.inderteminate:before {
+  animation: 2s ease-in-out 0s infinite running inderteminate;
+}
+
+.loading .inderteminate,
+.loading.inderteminate {
+  &::before {
+    opacity: 1;
+  }
+}
+
+@keyframes inderteminate {
+  0% {
+    transform: translate(0%, 0%) scale(0,1);
+  }
+  50% {
+    transform: translate(50%, 0%) scale(.5, 1);
+  }
+  100% {
+    transform: translate(100%, 0%) scale(0, 1);
+  }
+}
+
+// Dots circle spinner
+// -------------------------
+
+.dots-circle-spinner {
+  .generate-dots-spinner(8, 2, 1.5s);
+}
+
+.generate-dots-spinner (@n, @radius, @duration) {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  line-height: 1;
+  vertical-align: middle;
+  border-radius: 1em;
+  transition: all 150ms linear 0s;
+  transform: scale(0);
+  opacity: 0;
+  .generate-dots-circle(@n, @radius);
+  &.loading {
+    transform: scale(.25);
+    opacity: 1;
+    animation: @duration linear 150ms normal infinite forwards running dots-circle-rotation;
+  }
+
+  @keyframes dots-circle-rotation {
+    .generate-dots-circle-keyframes(@n, @radius);
+  }
+}
+
+.generate-dots-circle (@n, @radius, @offset: 0, @i: 1) when (@i <= @n) {
+  .generate-dots-circle(@n, @radius, @offset, @i + 1);
+
+  @angle: @i * 360 / @n * -1deg;
+  @x: @radius * cos(@angle) * 1em;
+  @y: @radius * sin(@angle) * 1em;
+  @blur: 0;
+  @multiplier: mod(@i + (@offset * @n), @n) / @n / 2 * -1em;
+
+  box-shadow+: @x @y @blur @multiplier;
+}
+
+.generate-dots-circle-keyframes (@n, @radius, @i: 0) when (@i <= @n) {
+  .generate-dots-circle-keyframes(@n, @radius, @i + 1);
+
+  @percentage: percentage(@i / @n);
+
+  @{percentage} {
+    .generate-dots-circle(@n, @radius, @i / @n);
+  }
+}

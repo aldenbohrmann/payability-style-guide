@@ -1,0 +1,45 @@
+//
+// Notification tray
+//
+// Centralized notification tray
+// see: https://bitbucket.org/payabilityinc/pyb-notification-tray
+// -------------------------
+
+.notifications-tray {
+  position: fixed;
+  z-index: 1060;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  @media (min-width: @grid-float-breakpoint) {
+    bottom: @padding-base-vertical * 6;
+    margin: 0 auto;
+    width: 620px;
+  }
+  .alert {
+    margin-bottom: 0;
+    overflow: hidden;
+    @media (min-width: @grid-float-breakpoint) {
+      margin: 0 auto @padding-base-vertical auto;
+    }
+    /* Angular animations */
+    &.ng-enter,
+    &.ng-leave {
+      transition: all 550ms ease-in-out 0s;
+    }
+    &.ng-leave.ng-leave-active,
+    &.ng-enter {
+      margin-bottom: @padding-base-vertical * -6;
+      opacity: 0;
+    }
+    &.ng-enter.ng-enter-active,
+    &.ng-leave {
+      margin-bottom: 0;
+      @media (min-width: @grid-float-breakpoint) {
+        margin-bottom: @padding-base-vertical;
+      }
+      opacity: 1;
+    }
+  }
+}

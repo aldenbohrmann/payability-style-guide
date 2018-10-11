@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Payability Styles">
+    <meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, payability, styles, guidelines, docs, bower, front-end, frontend, web development">
+    <meta name="author" content="Stefan Maric from Clevertech at Payability">
+
+    <title>
+      Components - Payability Styles Docs
+    </title>
+
+    <link href="//payability.github.io/payability-icons/style.css" rel="stylesheet">
+    <link href="../css/docs.css" rel="stylesheet">
+
+    <!-- favicons -->
+    <link rel="icon" href="/favicons/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon-precomposed.png">
+    <meta name="msapplication-TileColor" content="#f6f7fc">
+    <meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+
+  </head>
+
+  <body class="payability-styles-components">
+
+    <header class="navbar navbar-default navbar-fixed-top" id="top" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../" class="navbar-brand styles-navbar-brand">styles</a>
+        </div>
+        <nav class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/bootstrap/">See Bootstrap's docs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="components-header">
+      <div class="container">
+        <h1>Payability Components</h1>
+        <p>The Payability brand assets and componets</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <ul class="list-unstyled docs-toc">
+          <li toc-placeholder>
+            <h1>Table of contents</h1>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container">
+
+        <h2>Variables</h2>
+        <p>To keep consistent styles across projects, use <a href="/bootstrap/css/#less-variables">Bootstrap's variables</a> and payability-styles variables as much as you can.</p>
+
+        <h3>Colors</h3>
+
+        <div class="live-example">
+          <h4>Primary Colors</h4>
+          <ul class="color-swatch-list primary-colors">
+            <li><span class="color-swatch whale"><span class="color-name"></span></span></li>
+            <li><span class="color-swatch marine"><span class="color-name"></span></span></li>
+            <li><span class="color-swatch fern"><span class="color-name"></span></span></li>
+            <li><span class="color-swatch forest"><span class="color-name"></span></span></li>
+            <li><span class="color-swatch rhodamine"><span class="color-name"></span></span></li>
+          </ul>
+          <h4>Grays</h4>
+          <ul class="color-swatch-list gray-colors">
+            <li><span class="color-swatch hole"><span class="color-name"></span></span></li>
+            <li><span class="color-swatch vulcan"><span class="color-name"></span></span></li>
+            <li><span class="color-swatch shady"><span class="color-name"></span></span></li>
+            <li><span class="color-swatch mystic"><span class="color-name"></span></span></li>
+          </ul>
+        
+
+        <h3>Brand Images</h3>
+
+        <p>base64 encoded images to use as data URIs</p>
+
+        <div class="live-example">
+          <div class="logo-test">
+            <div class="logo sm light">
+            </div>
+            <p>
+              <code>{ background-image: url(@logo-sm-light); }</code>
+            </p>
+          </div>
+          <div class="logo-test">
+            <div class="logo sm dark">
+            </div>
+            <p>
+              <code>{ background-image: url(@logo-sm-dark); }</code>
+            </p>
+          </div>
+        </div>
+
+        <div class="attention-block warning">
+          <h4>Be aware of size</h4>
+          <p>
+            The <code>@logo-sm-</code> variants are <code>511x111</code> sized. Use <code>@logo-lg-light</code> or <code>@logo-lg-dark</code> variants when needed.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Favicons</h2>
+        <p>
+          We try to keep things simple; following <a href="https://github.com/audreyr/favicon-cheat-sheet">this cheat-sheet</a>, we provide the "Basics" and "Optional But Encouraged" files with payability-styles. Your HTML <code>&lt;head&gt;</code> should contain something like:
+        </p>
+
+        <div class="live-example">
+          <pre><code>
+&lt;link rel=&quot;icon&quot; href=&quot;/bower_components/payability-styles/components/favicons/favicon.ico&quot;&gt;
+&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/bower_components/payability-styles/components/favicons/apple-touch-icon-precomposed.png&quot;&gt;
+&lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#f6f7fc&quot;&gt;
+&lt;meta name=&quot;msapplication-TileImage&quot; content=&quot;/bower_components/payability-styles/components/favicons/mstile-144x144.png&quot;&gt;
+          </code></pre>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <h2>Typography</h2>
+        <p><em>Titillium</em> and <em>Lato</em> are Payability's new favorite typefaces. Titilium is used for headings and Lato for text. Play around with the different <code>font-weight</code>-<code>font-style</code> combinations.</p>
+
+        <div class="live-example">
+
+          <div class="typeface-test-drive">
+            <p class="typeface light">
+              Lato Light
+            </p>
+            <p class="typeface-code">
+              <code>{ font-weight: 200; font-style: normal; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <p class="typeface light-italic">
+              Lato Light Italic
+            </p>
+            <p class="typeface-code">
+              <code>{ font-weight: 200; font-style: italic; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <p class="typeface regular">
+              Lato Regular
+            </p>
+            <p class="typeface-code">
+              <code>{ font-weight: normal; font-style: normal; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <p class="typeface regular-italic">
+              Lato Regular Italic
+            </p>
+            <p class="typeface-code">
+              <code>{ font-weight: normal; font-style: italic; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <p class="typeface bold">
+              Lato Bold
+            </p>
+            <p class="typeface-code">
+              <code>{ font-weight: bold; font-style: normal; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <p class="typeface bold-italic">
+              Lato Bold Italic
+            </p>
+            <p class="typeface-code">
+              <code>{ font-weight: bold; font-style: italic; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <h3 class="typeface light">
+              Titillium Light
+            </h3>
+            <p class="typeface-code">
+              <code>{ font-weight: 300; font-style: normal; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <h3 class="typeface light-italic">
+              Titillium Light Italic
+            </h3>
+            <p class="typeface-code">
+              <code>{ font-weight: 300; font-style: italic; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <h3 class="typeface regular">
+              Titillium Regular
+            </h3>
+            <p class="typeface-code">
+              <code>{ font-weight: normal; font-style: normal; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <h3 class="typeface regular-italic">
+              Titillium Regular Italic
+            </h3>
+            <p class="typeface-code">
+              <code>{ font-weight: normal; font-style: italic; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <h3 class="typeface bold">
+              Titillium Bold
+            </h3>
+            <p class="typeface-code">
+              <code>{ font-weight: bold; font-style: normal; }</code>
+            </p>
+          </div>
+
+          <div class="typeface-test-drive">
+            <h3 class="typeface bold-italic">
+              Titillium Bold Italic
+            </h3>
+            <p class="typeface-code">
+              <code>{ font-weight: bold; font-style: italic; }</code>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <h2>Buttons</h2>
+        <p>payability-styles provides a bunch of extra button variants, take a look.</p>
+
+        <h3>Pill buttons</h3>
+        <p>Add the <code>.btn-pill</code> class to any <code>.btn</code> to round its borders.</p>
+        <div class="live-example">
+          <p>
+            <button class="btn btn-pill btn-default">Default</button>
+            <button class="btn btn-pill btn-primary">Primary</button>
+            <button class="btn btn-pill btn-success">Success</button>
+            <button class="btn btn-pill btn-info">Info</button>
+            <button class="btn btn-pill btn-warning">Warning</button>
+            <button class="btn btn-pill btn-danger">Danger</button>
+            <button class="btn btn-pill btn-link">Link</button>
+          </p>
+        </div>
+
+        <h4>Pill buttons with diff sizes</h4>
+        <p>Pill buttons support the different button sizes provided by Bootstrap.</p>
+        <div class="live-example">
+          <p>
+            <button class="btn btn-pill btn-info btn-lg">Info Large</button>
+            <button class="btn btn-pill btn-primary">Primary Normal</button>
+            <button class="btn btn-pill btn-success btn-sm">Success Small</button>
+            <button class="btn btn-pill btn-danger btn-xs">Danger Extra Small</button>
+          </p>
+        </div>
+
+
+        <h3>Outlined buttons</h3>
+        <p>Add the <code>.btn-outlined</code> class to any <code>.btn</code> to give it an outlined appearance.</p>
+        <div class="live-example">
+          <p>
+            <button class="btn btn-default btn-outlined">Default</button>
+            <button class="btn btn-primary btn-outlined">Primary</button>
+            <button class="btn btn-success btn-outlined">Success</button>
+            <button class="btn btn-info btn-outlined">Info</button>
+            <button class="btn btn-warning btn-outlined">Warning</button>
+            <button class="btn btn-danger btn-outlined">Danger</button>
+            <button class="btn btn-link btn-outlined">Link</button>
+          </p>
+        </div>
+
+        <h4>Outlined buttons with disabled state</h4>
+        <p>Outlined buttons support disabled state by either using the <code>disabled</code> HTML attribute or the <code>.disabled</code> class.</p>
+        <div class="live-example">
+          <p>
+            <button disabled class="btn btn-default btn-outlined">Default</button>
+            <button disabled class="btn btn-primary btn-outlined">Primary</button>
+            <button disabled class="btn btn-success btn-outlined">Success</button>
+            <button disabled class="btn btn-info btn-outlined">Info</button>
+            <button disabled class="btn btn-warning btn-outlined">Warning</button>
+            <button disabled class="btn btn-danger btn-outlined">Danger</button>
+            <button disabled class="btn btn-link btn-outlined">Link</button>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="dropdown-docs">
+      <div class="container">
+
+        <h2>Dropdowns</h2>
+        <p>We don't want to mess with Bootstrap, we like its foundations; so we create extra classes that play nicely with existent Bootstrap components.</p>
+
+        <h3>Pure CSS dropdown toggle</h3>
+        <p>Add the <code>.open-on-click</code> class to any <code>.dropdown</code>, <code>.dropup</code> or any other wrapper element with <code>position: relative;</code> containing the <code>.dropdown-toggle</code> and <code>.dropdown-menu</code> components to make the menu appear on click without Javascript at all. Check <a href="/bootstrap/components/#dropdowns">Bootstrap's docs about dropdowns</a> for more info.</p>
+
+        <div class="live-example">
+            <div class="dropdown open-on-click">
+              <a tabindex="0" class="btn btn-info dropdown-toggle">
+                Dropdown
+                <i class="caret"></i>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Lettuce</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Radish</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Zucchini</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Chili</a></li>
+              </ul>
+            </div>
+            <div class="dropup open-on-click">
+              <a tabindex="0" class="btn btn-primary btn-outlined dropdown-toggle">
+                Dropup
+                <i class="caret"></i>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Lettuce</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Radish</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Zucchini</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Chili</a></li>
+              </ul>
+            </div>
+        </div>
+
+        <h4>Dismissible dropdowns</h4>
+        <p>Since these dropdowns/dropups rely on the CSS <code>:focus</code> state of the <code>.dropdown-toggle</code>, their <code>.dropdown-menu</code> will close as soon as you click anywhere (including <code>.dropdown-menu</code> items) except the <code>.dropdown-toggle</code> itself. But, if you want to dismiss the menu on a second click, simply add any valid element with the <code>.dropdown-close</code> class somewhere after the <code>.dropdown-toggle</code>.</p>
+
+        <div class="live-example">
+            <div class="dropdown open-on-click">
+              <a tabindex="0" class="btn btn-info dropdown-toggle">
+                Dropdown
+                <i class="caret"></i>
+              </a>
+              <span class="dropdown-close"></span>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Lettuce</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Radish</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Zucchini</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Chili</a></li>
+              </ul>
+            </div>
+            <div class="dropup open-on-click">
+              <a tabindex="0" class="btn btn-primary btn-outlined dropdown-toggle">
+                Dropup
+                <i class="caret"></i>
+              </a>
+              <span class="dropdown-close"></span>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Lettuce</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Radish</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Zucchini</a></li>
+                <li><a href="#" onclick="alert(this.innerHTML); return false;">Chili</a></li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="attention-block warning">
+          <h4>MacOS' caveat</h4>
+          <p>Unfortunately, MacOS uses a strange set of rules to decide whenever an element is focused or not. This affects both, Safari and Firefox on MacOS. So, for example, <code>&lt;button&gt;</code> elements will never get the <code>:focus</code> state.</p>
+          <p>For that matter, use an <code>&lt;a&gt;</code> element with the <code>tabindex="0"</code> attribute as the dropdown's <code>.dropdown-toggle</code> component.</p>
+        </div>
+
+        <div class="attention-block success">
+          <h4>Extend</h4>
+          <p>If you want all of the dropdowns in a project to behave like this, without adding the extra markup (<code>.open-on-click</code>), simply extend them in your LESS file:</p>
+          <pre><code>
+.dropdown,
+.dropup {
+  .open-on-click();
+}
+          </code></pre>
+        </div>
+
+        <div class="attention-block info">
+          <h4>Keep it clean</h4>
+          <p>Remember to remove Javascript libraries and dependencies like <code>ui.bootstrap.dropdown</code> or <a href="/bootstrap/javascript/#dropdowns">Bootstrap's jQuery plugin</a> related to dropdowns, they are unnecessary.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <h2>Tooltips</h2>
+        <p>Add the <code>data-tooltip</code> attribute to any element to display its value as a tooltip.</p>
+
+        <div class="live-example">
+          <p class="lead">Hover on <a href="" data-tooltip="I'm a tooltip"> the awesome tooltip</a> and see it.</p>
+        </div>
+
+        <h3>Tooltip positions</h3>
+
+        <p>You may also add classes to the element to customize tooltip position</p>
+
+        <div class="live-example">
+          <p>
+            <button data-tooltip="Default tooltip with somewhat long informative text" class="btn btn-default">
+              Default
+            </button>
+            <button data-tooltip="Top tooltip" class="btn btn-default tooltip-top">
+              .tooltip-top
+            </button>
+            <button data-tooltip="Right tooltip" class="btn btn-default tooltip-right">
+              .tooltip-right
+            </button>
+            <button data-tooltip="Bottom tooltip" class="btn btn-default tooltip-bottom">
+              .tooltip-bottom
+            </button>
+            <button data-tooltip="Left tooltip" class="btn btn-default tooltip-left">
+              .tooltip-left
+            </button>
+          </p>
+        </div>
+
+        <div class="attention-block info">
+          <h4>Custom tooltip size</h4>
+          <p>If you want a custom tooltip size, selectively apply <code>width</code> and add <code>white-space: normal</code>:</p>
+          <pre><code>
+.some-element-with-tooltip::before {
+  width: 120px;
+  white-space: normal;
+}
+          </code></pre>
+        </div>
+
+        <div class="attention-block success">
+          <h4>Tooltip styles</h4>
+          <p>These data-tooltips can be customized using Bootstrap's tooltip-related LESS variables.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Breadcrumbs</h2>
+        <p>
+          Use <code>.pyb-breadcrumb</code> on <code>&lt;ol&gt;</code>/<code>&lt;ul&gt;</code> lists. Scale it using <code>font-size</code>. Highlight active elements using <code>.active</code> on any given <code>&lt;li&gt;</code> element.
+        </p>
+
+        <div class="live-example">
+          <ul class="pyb-breadcrumb">
+            <li class="active">
+              <a href="#" title="Go back to Sign Up">Sign Up</a>
+            </li>
+            <li class="active">
+              <a href="#" title="Go back to Basic Info">Basic Info</a>
+            </li>
+            <li class="active">
+              <span>Payment Info</span>
+            </li>
+            <li>
+              <span>Library</span>
+            </li>
+          </ul>
+        </div>
+
+        <h3>Automatic numbering</h3>
+
+        <p>
+          Add <code>.numbered</code> to the list to add automatic numbering.
+        </p>
+
+        <div class="live-example">
+          <ol class="pyb-breadcrumb numbered">
+            <li class="active">
+              <a href="#" title="Go back to Sign Up">Sign Up</a>
+            </li>
+            <li class="active">
+              <a href="#" title="Go back to Basic Info">Basic Info</a>
+            </li>
+            <li class="active">
+              <span>Payment Info</span>
+            </li>
+            <li>
+              <span>Library</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="attention-block warning">
+          <h4>Strict markup</h4>
+          <p>
+            Unlike Bootstrap's Breadcrumbs, <code>.pyb-breadcrumb</code> requires <code>&lt;li&gt;</code> elements to have a child element; that's it: always include an element inside the list item. <code>&lt;a&gt;</code> elements with <code>href</code> attribute receive special styles on <code>:hover</code>. If you don't want an item to be actionable, use any other element tag, like <code>&lt;span&gt;</code>.
+          </p>
+        </div>
+
+        <div class="attention-block success">
+          <h4>Bootstrap's Breadcrumbs</h4>
+          <p><a href="/bootstrap/components/#breadcrumbs" title="Bootstrap's Breadcrumbs">Bootstrap's default Breadcrumbs</a> are still available.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container">
+
+        <h2>Forms</h2>
+        <p>To avoid messing with Bootstrap's default form elements, we have created some extra components.</p>
+
+        <h3>Radio buttons and checkboxes</h3>
+        <p>
+          Browsers supporting CSS3 will receive stylished radio buttons and checkboxes. Disabled state also available.
+        </p>
+
+        <div class="live-example">
+          <form class="form">
+            <fieldset>
+              <legend>Enabled</legend>
+              <div class="form-group">
+                <input type="radio" name="radio-group-01" id="radio-01-01" value="Angular">
+                <label for="radio-01-01">Angular</label>
+                <input type="radio" name="radio-group-01" id="radio-01-02" value="React">
+                <label for="radio-01-02">React</label>
+                <input type="radio" name="radio-group-01" id="radio-01-03" value="Other" checked="checked">
+                <label for="radio-01-03">Other</label>
+              </div>
+              <div class="form-group">
+                <input type="checkbox" name="checkbox-group-01" id="checkbox-01-01" value="Angular">
+                <label for="checkbox-01-01">Angular</label>
+                <input type="checkbox" name="checkbox-group-01" id="checkbox-01-02" value="React">
+                <label for="checkbox-01-02">React</label>
+                <input type="checkbox" name="checkbox-group-01" id="checkbox-01-03" value="Other" checked="checked">
+                <label for="checkbox-01-03">Other</label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Text right</legend>
+              <div class="form-group">
+                <input type="radio" name="radio-group-02" id="radio-02-01" value="Angular">
+                <label for="radio-02-01" class="text-right">Angular</label>
+                <input type="radio" name="radio-group-02" id="radio-02-02" value="React">
+                <label for="radio-02-02" class="text-right">React</label>
+                <input type="radio" name="radio-group-02" id="radio-02-03" value="Other" checked="checked">
+                <label for="radio-02-03" class="text-right">Other</label>
+              </div>
+              <div class="form-group">
+                <input type="checkbox" name="checkbox-group-02" id="checkbox-02-01" value="Angular">
+                <label for="checkbox-02-01" class="text-right">Angular</label>
+                <input type="checkbox" name="checkbox-group-02" id="checkbox-02-02" value="React">
+                <label for="checkbox-02-02" class="text-right">React</label>
+                <input type="checkbox" name="checkbox-group-02" id="checkbox-02-03" value="Other" checked="checked">
+                <label for="checkbox-02-03" class="text-right">Other</label>
+              </div>
+            </fieldset>
+            <fieldset disabled="disabled">
+              <legend>Disabled</legend>
+              <div class="form-group">
+                <input type="radio" name="radio-group-03" id="radio-03-01" value="Angular">
+                <label for="radio-03-01">Angular</label>
+                <input type="radio" name="radio-group-03" id="radio-03-02" value="React">
+                <label for="radio-03-02">React</label>
+                <input type="radio" name="radio-group-03" id="radio-03-03" value="Other" checked="checked">
+                <label for="radio-03-03">Other</label>
+              </div>
+              <div class="form-group">
+                <input type="checkbox" name="checkbox-group-03" id="checkbox-03-01" value="Angular">
+                <label for="checkbox-03-01">Angular</label>
+                <input type="checkbox" name="checkbox-group-03" id="checkbox-03-02" value="React">
+                <label for="checkbox-03-02">React</label>
+                <input type="checkbox" name="checkbox-group-03" id="checkbox-03-03" value="Other" checked="checked">
+                <label for="checkbox-03-03">Other</label>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="attention-block warning">
+          <h4>Payability Icons required</h4>
+          <p>
+            Checkboxes require a custom icon, so remember to link <a href="https://github.com/Payability/payability-icons">Payability Icons</a> in your HTML.
+          </p>
+        </div>
+
+        <div class="attention-block warning">
+          <h4>Strict markup</h4>
+          <ul>
+            <li>Always place <code>&lt;label&gt;</code> just after the <code>&lt;input&gt;</code>.</li>
+            <li>Always add the <code>id</code> attribute to the <code>&lt;input&gt;</code>.</li>
+            <li>Always add the <code>for</code> attribute to the <code>&lt;label&gt;</code> with same value.</li>
+            <li>Add the <code>text-right</code> class to the <code>&lt;label&gt;</code> if you need it the other side.</li>
+          </ul>
+        </div>
+
+
+        <h3>Floating Label</h3>
+        <p>
+          Add the <code>.floating-label</code> class to a <code>&lt;label&gt;</code> placed just before an <code>&lt;input&gt;</code>. or <code>&lt;select&gt;</code>. It will style both, the label and the input/select element.
+        </p>
+        <p>
+          The <code>.floating-label</code> default state is floating; this is for accessibility reasons. You will have to listen to the input/select's changes to add the <code>.rest</code> class to the <code>.floating-label</code> label.
+        </p>
+        <p>
+          <code>.floating-label</code> will make its adjacent input's HTML5 placeholder invisible.
+        </p>
+        <div class="live-example">
+          <form class="from">
+            <div class="form-group">
+              <label class="floating-label">This label is floating</label>
+              <input type="text" value="And input's value is nicely placed here" class="form-control" placeholder="This placeholder should be invisible">
+            </div>
+            <div class="form-group">
+              <label class="floating-label">You should not see the real placeholder, type here</label>
+              <input type="text" class="form-control" placeholder="This placeholder should be invisible">
+            </div>
+            <div class="form-group">
+              <label class="floating-label floating-label-select">It works with selects too</label>
+              <select class="form-control">
+                <option value=""></option>
+                <option value="ME">Maine</option>
+                <option value="AL">Alabama</option>
+                <option value="CA" selected>California</option>
+                <option value="FL">Florida</option>
+                <option value="NY">New York</option>
+                <option value="TN">Tennessee</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="floating-label">Floating labels for textareas</label>
+              <textarea class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <label class="floating-label"> Input-group support</label>
+                <input type="text" class="form-control" aria-label="..." value="Floating labels support Bootstrap's input-group to the right">
+                <span class="input-group-btn">
+                  <button class="btn btn-link" type="button">Help</button>
+                </span>
+              </div><!-- /input-group -->
+            </div>
+
+
+            <div class="form-group">
+              <div class="input-group">
+                <label class="floating-label"> Input-group support</label>
+                <input type="text" class="form-control" aria-label="..." value="Floating labels support Bootstrap's input-group to the right">
+                <span class="input-group-btn">
+                  <button class="btn btn-success btn-outlined" type="button">Let's go!</button>
+                </span>
+              </div><!-- /input-group -->
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <h2>Loaders and spinners</h2>
+
+        <h3>Inderteminate Load Bar</h3>
+        <p>Add any element with the <code>.load-bar.inderteminate</code> classes to create a loader. Add the <code>.loading</code> class to animate it.</p>
+
+        <div class="live-example">
+          <p>We are fetching your data</p>
+          <p class="load-bar inderteminate loading"></p>
+        </div>
+
+        <h4>Load Bar Colors</h4>
+
+        <p>Add state clases to change progress bar color:</p>
+
+        <div class="live-example">
+          <p>Default / Info</p>
+          <p class="load-bar inderteminate info loading"></p>
+          <p>Success</p>
+          <p class="load-bar inderteminate success loading"></p>
+          <p>Warning</p>
+          <p class="load-bar inderteminate warning loading"></p>
+          <p>Danger</p>
+          <p class="load-bar inderteminate danger loading"></p>
+          <p>Muted</p>
+          <p class="load-bar inderteminate muted loading"></p>
+        </div>
+
+        <div class="attention-block info">
+          <h4>Custom load-bar size</h4>
+          <p>If you need to change the progress bar thikness, simply change its <code>font-size</code>:</p>
+          <pre><code>
+.some-load-bar {
+  font-size: 2em;
+}
+          </code></pre>
+        </div>
+
+
+        <h3>Dots circle spinner</h3>
+        <p>Add any element with the <code>.dots-circle-spinner</code> class to create a spinner. Add the <code>.loading</code> class to animate it.</p>
+        <p>This is an inline-block element and you can use it as a font-icons.</p>
+
+        <div class="live-example">
+          <p class="lead">
+            We are fetching your data
+            <span class="dots-circle-spinner loading"></span>
+          </p>
+          <p style="font-size: 12em; text-align: center;" class="text-muted">
+            <span class="dots-circle-spinner loading"></span>
+          </p>
+        </div>
+
+        <div class="attention-block info">
+          <h4>Custom dots-circle-spinner size</h4>
+          <p>This component's size is <code>font-size</code>-based, so you can give it any size you want:</p>
+          <pre><code>
+.some-spinner {
+  font-size: 12em;
+}
+          </code></pre>
+        </div>
+
+        <div class="attention-block info">
+          <h4>Custom color</h4>
+          <p>This component's color is <code>color</code>-based, so you can give it any color you want.</p>
+          <p>Use <a href="/bootstrap/css/#helper-classes-colors">Bootstrap's contextual text colors</a> preferiblely:</p>
+          <pre><code>
+&lt;span class="dots-circle-spinner loading text-danger"&gt;&lt;/span&gt;
+          </code></pre>
+        </div>
+
+      </div>
+    </section>
+
+  <script src="../js/docs.js"></script>
+  </body>
+</html>

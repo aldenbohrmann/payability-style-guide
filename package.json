@@ -1,0 +1,56 @@
+{
+  "author": "Stefan Maric <me@stefanmaric.com> (http://stefanmaric.com)",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
+  "description": "Bower component that provides .less files with Payability's styles based on Payability's style guide.",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "chokidar-cli": "^1.2.0",
+    "download-cli": "^1.0.1",
+    "gh-pages": "^1.0.0",
+    "less": "^2.7.1",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0",
+    "npm-run-all": "^4.0.2",
+    "replace": "^0.3.0",
+    "rimraf": "^2.5.4"
+  },
+  "homepage": "https://github.com/Payability/payability-styles",
+  "keywords": [
+    "payability",
+    "styles",
+    "less"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "main.less",
+  "name": "payability-styles",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Payability/payability-styles.git"
+  },
+  "scripts": {
+    "build:docs": "npm run download:docs && npm run unzip:docs && npm run less && npm run patch:docs && npm run less:docs && npm run merge:docs && npm run copy:favicons",
+    "clean": "rimraf _docs/ tmp/ npm-debug.log",
+    "copy:favicons": "mkdirp _docs/favicons/ && ncp components/favicons/ _docs/favicons/",
+    "download:docs": "test -f tmp/docs.zip || npm run update:docs",
+    "less": "lessc dist.less _dist/main.css",
+    "less:docs": "lessc docs/docs.less docs/css/docs.css",
+    "less:docs:watch": "chokidar 'main.less' 'variables.less' 'components/*.less' 'docs/*.less' --command 'npm run less:docs'",
+    "less:watch": "chokidar 'main.less' 'dist.less' 'variables.less' 'components/*.less' --command 'npm run less'",
+    "merge:docs": "ncp docs/ _docs/",
+    "merge:docs:watch": "chokidar 'docs/**/*.{html,css,js,png}' --command 'npm run merge:docs'",
+    "patch:docs": "cd _docs/bootstrap/ && replace -s '\\.\\.\\/' './' index.html && cd dist/css/ && rimraf bootstrap.min.css && ln -s ../../../../_dist/main.css bootstrap.min.css",
+    "posttest": "echo 'Test passed.'",
+    "preunzip:docs": "rimraf _docs/bootstrap/ && mkdirp _docs",
+    "preupdate:docs": "mkdirp tmp/",
+    "publish": "npm run build:docs && gh-pages -d _docs/",
+    "serve:docs": "browser-sync start --server '_docs/' --files '_docs/' --port 8080 --no-ui --no-open",
+    "start": "npm run build:docs && npm-run-all --parallel serve:docs less:watch less:docs:watch merge:docs:watch",
+    "test": "lessc dist.less > /dev/null",
+    "unzip:docs": "unzip -o -d tmp/ tmp/docs.zip && mv -f tmp/bootstrap-gh-pages _docs/bootstrap",
+    "update:docs": "echo 'Downloading, hold on...' && download 'https://github.com/twbs/bootstrap/archive/gh-pages.zip' > tmp/docs.zip"
+  },
+  "version": "4.8.0"
+}

@@ -1,0 +1,82 @@
+//
+// Button styles
+// -------------------------
+
+// Add transitions to all buttons
+.btn {
+  transition: all 150ms ease-in-out 0s;
+}
+
+// Outlined button variant mixin
+.btn-outlined-variant(@color, @border-color) {
+  color: @border-color;
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: @border-color;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: transparent;
+      color: @border-color;
+    }
+  }
+}
+
+// Outlined button variants
+.btn.btn-outlined {
+  background-color: transparent;
+  // Variants
+  &.btn-default {
+    .btn-outlined-variant(@btn-default-color, @btn-default-border);
+    // @btn-default-border is too light for text
+  }
+  &.btn-primary {
+    .btn-outlined-variant(@btn-primary-color, @btn-primary-border);
+  }
+  &.btn-success {
+    .btn-outlined-variant(@btn-success-color, @btn-success-border);
+  }
+  &.btn-info {
+    .btn-outlined-variant(@btn-info-color, @btn-info-border);
+  }
+  &.btn-warning {
+    .btn-outlined-variant(@btn-warning-color, @btn-warning-border);
+  }
+  &.btn-danger {
+    .btn-outlined-variant(@btn-danger-color, @btn-danger-border);
+  }
+}
+
+// Pill button variants
+.btn.btn-pill {
+
+  // border-radius depends on button' height
+  @border-radius-pill: (@font-size-base * @line-height-base + @padding-base-vertical * 2) / 2;
+  border-radius: @border-radius-pill;
+
+  // different for every button size
+  &.btn-lg {
+    @border-radius-pill: (@font-size-large * @line-height-large + @padding-large-vertical * 2) / 2;
+    border-radius: @border-radius-pill;
+  }
+  &.btn-sm {
+    @border-radius-pill: (@font-size-small * @line-height-small + @padding-small-vertical * 2) / 2;
+    border-radius: @border-radius-pill;
+  }
+  &.btn-xs {
+    @border-radius-pill: (@font-size-small * @line-height-small + @padding-xs-vertical * 2) / 2;
+    border-radius: @border-radius-pill;
+  }
+}
