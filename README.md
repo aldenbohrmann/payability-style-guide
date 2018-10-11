@@ -107,3 +107,4 @@ Befor you start hacking, you must know we have a `.editorconfig` file. Please be
     - Remember to push the tags with `git push --tags`
 * Use [Semantic Versioning](http://semver.org/) for those tags. `v0.1.3`
 # payability-style-guide
+# payability-style-guide
